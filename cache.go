@@ -154,6 +154,13 @@ func (c *cache) get(k string) (interface{}, bool) {
 	return item.Object, true
 }
 
+func (c *cache) GetItem(k string) (Item, bool) {
+	c.RLock()
+	item, found := c.items[k]
+	c.RUnlock()
+	return item, found
+}
+
 // Increment an item of type int, int8, int16, int32, int64, uintptr, uint,
 // uint8, uint32, or uint64, float32 or float64 by n. Returns an error if the
 // item's value is not an integer, if it was not found, or if it is not
