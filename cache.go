@@ -154,7 +154,7 @@ func (c *cache) get(k string) (interface{}, bool) {
 	return item.Object, true
 }
 
-func (c *cache) GetItem(k string) (Item, bool) {
+func (c *cache) GetItem(k string) (*Item, bool) {
 	c.RLock()
 	item, found := c.items[k]
 	c.RUnlock()
